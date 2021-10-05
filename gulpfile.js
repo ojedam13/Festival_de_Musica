@@ -4,7 +4,9 @@ var sass = require('gulp-sass')(require('sass'));
 // Funcion que compila SaSs
 function css(  ) {
     return src('src/scss/app.scss')
-        .pipe(sass())
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }))
         .pipe(dest('./build/css') )
 }
 
