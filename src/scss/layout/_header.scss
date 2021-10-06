@@ -2,7 +2,7 @@
     background-color: $verde;
     
     .contenido-header{
-       padding: $separacion / 2 0; 
+       padding: 5 / 2 0; 
     
        @include tablet{
            display: flex;
