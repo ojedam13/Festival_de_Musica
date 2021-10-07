@@ -2,6 +2,7 @@ const { series, src, dest, watch, parallel } = require('gulp');
 var sass = require('gulp-sass')(require('sass'));
 const imagemin = require('gulp-imagemin');
 const notify = require('gulp-notify');
+const webp = require('gulp-webp');
 
 // Funcion que compila SaSs
 function css(  ) {
@@ -27,6 +28,13 @@ function imagenes() {
         .pipe( notify({message: 'Imagen Minificada'}))
 }
 
+function versionWebp() {
+    return src('src/img/**/*')
+        .pipe(webp())
+        .pipe(dest('./build/img'))
+     .pipe( notify({message: 'Verson webp lista'}))
+}
+
 function watchArchivos(){
     watch('src/scss/**/*.scss', css); //* = la carpeta actual - ** = Todos los archivos con esa extension
 }
@@ -36,4 +44,4 @@ exports.minificarcss = minificarcss;
 exports.imagenes = imagenes;
 exports.watchArchivos = watchArchivos;
 
-exports.default = series( css, imagenes, watchArchivos);
+exports.default = series( css, imagenes, versionWebp, watchArchivos);

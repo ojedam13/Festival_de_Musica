@@ -19,6 +19,7 @@
     "gulp-imagemin": "^7.0.0",
     "gulp-notify": "^4.0.0",
     "gulp-sass": "^5.0.0",
+    "gulp-webp": "^4.0.1",
     "sass": "^1.35.2"
   },
   "dependencies": {
