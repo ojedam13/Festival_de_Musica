@@ -11,6 +11,9 @@ const postcss = require('gulp-postcss');
 const cssnano = require('cssnano');
 const sourcemaps = require('gulp-sourcemaps');
 
+// utilidades js
+const terser = require('gulp-terser-js');
+
 // Funcion que compila SaSs
 function css(  ) {
     return src('src/scss/app.scss')
@@ -23,7 +26,10 @@ function css(  ) {
 
 function javascript() {
     return src('src/js/**/*.js')
-        .pipe( concat('bundle.js'))
+        .pipe( sourcemaps.init())
+        .pipe(concat('bundle.js'))
+        .pipe(terser())
+        .pipe( sourcemaps.write('.'))
         .pipe( dest('./build/js'))
 }
 
